@@ -12,9 +12,7 @@ import java.util.List;
 @Repository
 public interface DiaRepository extends JpaRepository<Dia, Long> {
 
-
     @Query("SELECT d.id FROM Dia d WHERE d.dia = :data")
     List<Long> findIdsByData(@Param("data") LocalDate data);
-
 
 }

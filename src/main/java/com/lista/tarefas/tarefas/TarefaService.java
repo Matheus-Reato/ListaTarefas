@@ -29,11 +29,11 @@ public class TarefaService {
 
     @Transactional
     public Tarefa createTarefa(Tarefa tarefa) {
-        tarefaRepository.save(tarefa);
-        List<Dia> diaList = tarefa.getDiaList();
-        diaList.forEach(dia -> dia.setTarefa(tarefa));
-        diaRepository.saveAll(diaList);
-        return tarefa;
+            tarefaRepository.save(tarefa);
+            List<Dia> diaList = tarefa.getDiaList();
+            diaList.forEach(dia -> dia.setTarefa(tarefa));
+            diaRepository.saveAll(diaList);
+            return tarefa;
     }
 
     public List<Tarefa> getAllTarefas() {
@@ -58,10 +58,9 @@ public class TarefaService {
     @Transactional
     public Tarefa updateTarefa(Tarefa tarefaAtualizada) {
 
-        // Atualiza a tarefa no banco de dados
         Tarefa tarefaExistente = tarefaRepository.findById(tarefaAtualizada.getId()).orElse(null);
         if (tarefaExistente == null) {
-            // Se a tarefa não existir, retorna null ou lança uma exceção, conforme necessário
+            // Se a tarefa não existir, retorna null
             return null;
         }
 
@@ -81,5 +80,3 @@ public class TarefaService {
     }
 
 }
-
-

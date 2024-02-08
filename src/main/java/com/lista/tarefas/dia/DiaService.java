@@ -20,10 +20,8 @@ public class DiaService {
         this.tarefaRepository = tarefaRepository;
     }
 
-
     public List<Tarefa> getTarefaPorDia(LocalDate data){
         List<Long> diaIds = diaRepository.findIdsByData(data);
-
         return tarefaRepository.findByDiaIds(diaIds);
     }
 }
