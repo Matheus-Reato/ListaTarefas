@@ -4,13 +4,10 @@ import com.lista.tarefas.dia.DadosCadastroDia;
 
 import java.util.List;
 
-public record DadosCadastroTarefa(
-                                  String nome_tarefa,
+public record DadosCadastroTarefa(String nome_tarefa,
                                   String descricao_tarefa,
                                   StatusTarefa status,
-                                  List<DadosCadastroDia> listaDia
-                                 ) {
-
+                                  List<DadosCadastroDia> listaDia) {
 }
 
 

@@ -29,15 +29,15 @@ public class TarefaService {
 
     @Transactional
     public Tarefa createTarefa(Tarefa tarefa) {
-            tarefaRepository.save(tarefa);
-            List<Dia> diaList = tarefa.getDiaList();
-            diaList.forEach(dia -> dia.setTarefa(tarefa));
-            diaRepository.saveAll(diaList);
-            return tarefa;
+        tarefaRepository.save(tarefa);
+        List<Dia> diaList = tarefa.getDiaList();
+        diaList.forEach(dia -> dia.setTarefa(tarefa));
+        diaRepository.saveAll(diaList);
+        return tarefa;
     }
 
     public List<Tarefa> getAllTarefas() {
-        //List<Tarefa> tarefa = tarefaRepository.findAll();
+        //return tarefaRepository.findAll();
 
         return tarefaRepository.findAllOrderedByDiaAndHorario();
     }
@@ -47,6 +47,7 @@ public class TarefaService {
     }
 
     public boolean deleteTarefa(Long id) {
+
         if (tarefaRepository.existsById(id)) {
             tarefaRepository.deleteById(id);
             return true;

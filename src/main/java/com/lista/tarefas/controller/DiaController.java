@@ -25,7 +25,11 @@ public class DiaController {
     public ResponseEntity<List<Tarefa>> getTarefaByDia(@PathVariable("data") LocalDate data){
         List<Tarefa> tarefas = diaService.getTarefaPorDia(data);
 
-        return new ResponseEntity<>(tarefas, HttpStatus.OK);
-
+        if(tarefas.isEmpty()){
+            return new ResponseEntity<>(tarefas, HttpStatus.NO_CONTENT);
+        }
+        else {
+            return new ResponseEntity<>(tarefas, HttpStatus.OK);
+        }
     }
 }
