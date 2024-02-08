@@ -73,7 +73,7 @@ public class TarefaService {
         // Atualiza os dias associados à tarefa
         List<Dia> diasAtualizados = tarefaAtualizada.getDiaList();
         for (Dia dia : diasAtualizados) {
-            //dia.setTarefa(tarefaExistente);
+            dia.setTarefa(tarefaExistente);
         }
         diaRepository.saveAll(diasAtualizados);
 
